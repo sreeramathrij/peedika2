@@ -1,0 +1,273 @@
+import { Product } from '@/types/product';
+
+export const products: Product[] = [
+  {
+    id: '1',
+    name: 'Bamboo Wireless Charger',
+    brand: 'EcoTech',
+    price: 1499,
+    originalPrice: 1999,
+    image: 'https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=400&h=400&fit=crop',
+    images: [
+      'https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop',
+    ],
+    category: 'electronics',
+    description: 'Fast wireless charging pad made from sustainable bamboo. Compatible with all Qi-enabled devices. 15W fast charging with eco-friendly materials.',
+    ecoScore: 85,
+    sustainability: {
+      materials: 90,
+      manufacturingEthics: 80,
+      packaging: 95,
+      shipping: 75,
+      lifespan: 85,
+    },
+    ecoTags: ['Recycled', 'Carbon Neutral', 'Plastic-Free'],
+    materialsInfo: 'Made from FSC-certified bamboo with recycled plastic internals',
+    packagingInfo: '100% recyclable cardboard packaging with soy-based inks',
+    shippingInfo: 'Carbon-neutral shipping via eco-friendly logistics partners',
+    inStock: true,
+  },
+  {
+    id: '2',
+    name: 'Organic Cotton T-Shirt',
+    brand: 'GreenWear',
+    price: 899,
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
+    images: [
+      'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&h=600&fit=crop',
+    ],
+    category: 'clothing',
+    description: 'Premium organic cotton t-shirt with natural dyes. Super soft, breathable, and made to last. Ethically produced in fair trade certified factories.',
+    ecoScore: 92,
+    sustainability: {
+      materials: 95,
+      manufacturingEthics: 95,
+      packaging: 90,
+      shipping: 85,
+      lifespan: 90,
+    },
+    ecoTags: ['Organic', 'Fair Trade', 'Vegan', 'Zero Waste'],
+    materialsInfo: 'GOTS certified organic cotton with plant-based dyes',
+    packagingInfo: 'Compostable mailer made from corn starch',
+    shippingInfo: 'Shipped in bulk to reduce carbon footprint',
+    inStock: true,
+  },
+  {
+    id: '3',
+    name: 'Solar Power Bank 20000mAh',
+    brand: 'SunCharge',
+    price: 2499,
+    originalPrice: 2999,
+    image: 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&h=400&fit=crop',
+    category: 'electronics',
+    description: 'High-capacity solar power bank with dual USB ports. Charge your devices using clean solar energy. Perfect for outdoor adventures.',
+    ecoScore: 78,
+    sustainability: {
+      materials: 70,
+      manufacturingEthics: 75,
+      packaging: 85,
+      shipping: 80,
+      lifespan: 85,
+    },
+    ecoTags: ['Renewable Energy', 'Carbon Neutral'],
+    inStock: true,
+  },
+  {
+    id: '4',
+    name: 'Recycled Glass Water Bottle',
+    brand: 'PureFlow',
+    price: 599,
+    image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=400&fit=crop',
+    category: 'home',
+    description: 'Beautiful water bottle made from 100% recycled glass. BPA-free, dishwasher safe, and comes with a bamboo lid. Keep your drinks fresh naturally.',
+    ecoScore: 94,
+    sustainability: {
+      materials: 98,
+      manufacturingEthics: 90,
+      packaging: 95,
+      shipping: 85,
+      lifespan: 95,
+    },
+    ecoTags: ['Recycled', 'Plastic-Free', 'Zero Waste'],
+    inStock: true,
+  },
+  {
+    id: '5',
+    name: 'Natural Face Serum',
+    brand: 'PureGlow',
+    price: 1299,
+    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop',
+    category: 'beauty',
+    description: 'Hydrating face serum with organic ingredients. Vegan, cruelty-free, and packaged in recyclable glass. Nourish your skin the natural way.',
+    ecoScore: 88,
+    sustainability: {
+      materials: 92,
+      manufacturingEthics: 85,
+      packaging: 90,
+      shipping: 80,
+      lifespan: 85,
+    },
+    ecoTags: ['Organic', 'Vegan', 'Biodegradable', 'Plastic-Free'],
+    inStock: true,
+  },
+  {
+    id: '6',
+    name: 'Hemp Backpack',
+    brand: 'NatureCarry',
+    price: 2199,
+    originalPrice: 2799,
+    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
+    category: 'clothing',
+    description: 'Durable backpack made from organic hemp fiber. Water-resistant, spacious, and built to last for years. Perfect for daily use or travel.',
+    ecoScore: 86,
+    sustainability: {
+      materials: 92,
+      manufacturingEthics: 85,
+      packaging: 80,
+      shipping: 75,
+      lifespan: 95,
+    },
+    ecoTags: ['Organic', 'Fair Trade', 'Biodegradable'],
+    inStock: true,
+  },
+  {
+    id: '7',
+    name: 'Bamboo Cutlery Set',
+    brand: 'EcoEats',
+    price: 349,
+    image: 'https://images.unsplash.com/photo-1584346133934-a3afd3e2ae63?w=400&h=400&fit=crop',
+    category: 'home',
+    description: 'Portable bamboo cutlery set with fork, knife, spoon, and chopsticks. Say goodbye to single-use plastic. Comes with a cotton carry pouch.',
+    ecoScore: 96,
+    sustainability: {
+      materials: 98,
+      manufacturingEthics: 92,
+      packaging: 98,
+      shipping: 90,
+      lifespan: 95,
+    },
+    ecoTags: ['Biodegradable', 'Plastic-Free', 'Zero Waste', 'Vegan'],
+    inStock: true,
+  },
+  {
+    id: '8',
+    name: 'Organic Granola Mix',
+    brand: 'NaturesBest',
+    price: 449,
+    image: 'https://images.unsplash.com/photo-1517093728432-a0440f8d45af?w=400&h=400&fit=crop',
+    category: 'food',
+    description: 'Delicious organic granola with nuts and dried fruits. No artificial preservatives or sweeteners. Perfect for a healthy breakfast.',
+    ecoScore: 89,
+    sustainability: {
+      materials: 95,
+      manufacturingEthics: 88,
+      packaging: 85,
+      shipping: 82,
+      lifespan: 90,
+    },
+    ecoTags: ['Organic', 'Locally Sourced', 'Plastic-Free'],
+    inStock: true,
+  },
+  {
+    id: '9',
+    name: 'Recycled Yoga Mat',
+    brand: 'FlowEco',
+    price: 1899,
+    image: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=400&h=400&fit=crop',
+    category: 'sports',
+    description: 'Premium yoga mat made from recycled materials. Non-slip surface, extra cushioning, and completely plastic-free. Enhance your practice sustainably.',
+    ecoScore: 82,
+    sustainability: {
+      materials: 88,
+      manufacturingEthics: 80,
+      packaging: 85,
+      shipping: 70,
+      lifespan: 85,
+    },
+    ecoTags: ['Recycled', 'Vegan', 'Plastic-Free'],
+    inStock: true,
+  },
+  {
+    id: '10',
+    name: 'Wooden Bluetooth Speaker',
+    brand: 'SoundNature',
+    price: 3499,
+    originalPrice: 4499,
+    image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop',
+    category: 'electronics',
+    description: 'Premium Bluetooth speaker with a beautiful walnut wood finish. Rich sound quality meets sustainable design. 12-hour battery life.',
+    ecoScore: 75,
+    sustainability: {
+      materials: 82,
+      manufacturingEthics: 70,
+      packaging: 80,
+      shipping: 65,
+      lifespan: 78,
+    },
+    ecoTags: ['Recycled', 'Carbon Neutral'],
+    inStock: true,
+  },
+  {
+    id: '11',
+    name: 'Organic Shampoo Bar',
+    brand: 'PureHair',
+    price: 299,
+    image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400&h=400&fit=crop',
+    category: 'beauty',
+    description: 'Zero-waste shampoo bar that lasts as long as 3 bottles. Made with organic ingredients and essential oils. Gentle on hair and the planet.',
+    ecoScore: 97,
+    sustainability: {
+      materials: 98,
+      manufacturingEthics: 95,
+      packaging: 100,
+      shipping: 95,
+      lifespan: 92,
+    },
+    ecoTags: ['Organic', 'Zero Waste', 'Vegan', 'Plastic-Free', 'Biodegradable'],
+    inStock: true,
+  },
+  {
+    id: '12',
+    name: 'Stainless Steel Lunchbox',
+    brand: 'MealPrep',
+    price: 799,
+    image: 'https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400&h=400&fit=crop',
+    category: 'home',
+    description: 'Three-tier stainless steel lunchbox with silicone seals. Leak-proof, dishwasher safe, and will last a lifetime. Perfect for work or school.',
+    ecoScore: 91,
+    sustainability: {
+      materials: 95,
+      manufacturingEthics: 88,
+      packaging: 90,
+      shipping: 85,
+      lifespan: 98,
+    },
+    ecoTags: ['Recycled', 'Plastic-Free', 'Zero Waste'],
+    inStock: true,
+  },
+];
+
+export const getProductById = (id: string): Product | undefined => {
+  return products.find(p => p.id === id);
+};
+
+export const getProductsByCategory = (category: string): Product[] => {
+  return products.filter(p => p.category === category);
+};
+
+export const getRelatedProducts = (product: Product, limit = 4): Product[] => {
+  return products
+    .filter(p => p.category === product.category && p.id !== product.id)
+    .slice(0, limit);
+};
+
+export const getGreenerAlternative = (product: Product): Product | null => {
+  const alternatives = products.filter(
+    p => p.category === product.category && p.ecoScore > product.ecoScore && p.id !== product.id
+  );
+  return alternatives.length > 0 ? alternatives.reduce((best, current) => 
+    current.ecoScore > best.ecoScore ? current : best
+  ) : null;
+};
