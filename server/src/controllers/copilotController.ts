@@ -8,7 +8,7 @@ import { getChatHistory, appendToChatHistory } from "../services/chatMemory";
 import { AuthRequest } from "../middleware/auth";
 
 export const copilot = async (req: AuthRequest, res: Response) => {
-  const { message } = req.body;
+  const { message, productId } = req.body;
   const userId = req.user._id;
   await appendToChatHistory(userId, "user", message);
 
@@ -23,14 +23,14 @@ export const copilot = async (req: AuthRequest, res: Response) => {
       return evaluateCart(userId, message, res);
 
     case "GREENER_ALTERNATIVES":
-      return greenerSuggestions(userId, message, res);
+      return greenerSuggestions(userId, message, res, productId);
 
     case "PRODUCT_INFO":
-      return explainProduct(userId, message, res);
+      return explainProduct(userId, message, res, productId);
 
     default:
       // Try to find a product from the message and provide info
-      return explainProduct(userId, message, res);
+      return explainProduct(userId, message, res, productId);
   }
 };
 
@@ -155,8 +155,11 @@ const findProductFromMessage = async (message: string) => {
   return product;
 };
 
-const greenerSuggestions = async (userId: string, message: string, res: Response) => {
-  const product = await findProductFromMessage(message);
+const greenerSuggestions = async (userId: string, message: string, res: Response, productId?: string) => {
+  // If productId is provided, use it directly; otherwise try to find from message
+  let product = productId 
+    ? await Product.findById(productId)
+    : await findProductFromMessage(message);
 
   if (!product)
     return res.json({
@@ -208,8 +211,11 @@ const greenerSuggestions = async (userId: string, message: string, res: Response
   });
 };
 
-const explainProduct = async (userId: string, message: string, res: Response) => {
-  const product = await findProductFromMessage(message);
+const explainProduct = async (userId: string, message: string, res: Response, productId?: string) => {
+  // If productId is provided, use it directly; otherwise try to find from message
+  let product = productId 
+    ? await Product.findById(productId)
+    : await findProductFromMessage(message);
 
   if (!product)
     return res.json({

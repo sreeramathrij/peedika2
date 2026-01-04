@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,15 +10,16 @@ import { toast } from 'sonner';
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
-  const { items, subtotal } = useCart();
+  const [searchParams] = useSearchParams();
+  const { items, subtotal, refreshCart } = useCart();
   const { refreshUser } = useAuth();
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [orderId, setOrderId] = useState('');
 
-  // Get discount values from CartPage (these would ideally come from URL params or context)
-  const [ecoPointsToUse] = useState(0);
-  const [storeCreditToUse] = useState(0);
+  // Get discount values from URL params
+  const ecoPointsToUse = parseInt(searchParams.get('ecoPoints') || '0', 10);
+  const storeCreditToUse = parseInt(searchParams.get('storeCredit') || '0', 10);
 
   const handlePlaceOrder = async () => {
     if (items.length === 0) {
@@ -35,6 +36,9 @@ const CheckoutPage = () => {
 
       // Update user data with new eco-points and credits
       await refreshUser();
+      
+      // Clear the cart in the UI
+      await refreshCart();
 
       setOrderId(response.data.order.id);
       setOrderPlaced(true);

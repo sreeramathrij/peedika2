@@ -203,21 +203,21 @@ const ProductDetailPage = () => {
               <div className="space-y-4">
                 {Object.entries(sustainabilityWeights).map(([key, { label, weight, icon: Icon }]) => {
                   const value = product.sustainability[key as keyof typeof product.sustainability];
-                  const level = getEcoScoreLevel(value);
+                  const percentage = (value / weight) * 100;
+                  const level = getEcoScoreLevel(percentage);
                   return (
                     <div key={key}>
                       <div className="flex items-center justify-between mb-1">
                         <div className="flex items-center gap-2">
                           <Icon className="h-4 w-4 text-muted-foreground" />
                           <span className="text-sm font-medium text-foreground">{label}</span>
-                          <span className="text-xs text-muted-foreground">({weight}%)</span>
                         </div>
-                        <span className="text-sm font-semibold">{value}</span>
+                        <span className="text-sm font-semibold">{value} / {weight}</span>
                       </div>
                       <div className="h-2 bg-secondary rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
-                          animate={{ width: `${value}%` }}
+                          animate={{ width: `${percentage}%` }}
                           transition={{ duration: 0.8, ease: 'easeOut' }}
                           className={cn(
                             'h-full rounded-full',

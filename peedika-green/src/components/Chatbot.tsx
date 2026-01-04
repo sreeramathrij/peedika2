@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send, Leaf, Sparkles, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -38,6 +39,11 @@ export const Chatbot = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { isAuthenticated } = useAuth();
   const { addToCart } = useCart();
+  const location = useLocation();
+
+  // Extract product ID from URL if on a product detail page
+  const productIdMatch = location.pathname.match(/^\/product\/([^/]+)/);
+  const currentProductId = productIdMatch ? productIdMatch[1] : undefined;
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -74,7 +80,7 @@ export const Chatbot = () => {
         return;
       }
 
-      const result = await copilotAPI.sendMessage(messageText);
+      const result = await copilotAPI.sendMessage(messageText, currentProductId);
       const data = result.data;
 
       const response: Message = {

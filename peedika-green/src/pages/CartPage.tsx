@@ -303,7 +303,7 @@ const CartPage = () => {
 
               {/* Checkout Button */}
               <Button size="lg" className="w-full rounded-full" asChild>
-                <Link to={isAuthenticated ? '/checkout' : '/signin'}>
+                <Link to={isAuthenticated ? `/checkout?ecoPoints=${ecoPointsToRedeem}&storeCredit=${storeCreditToUse}` : '/signin'}>
                   {isAuthenticated ? 'Proceed to Checkout' : 'Sign in to Checkout'}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

@@ -82,8 +82,8 @@ export const cartAPI = {
 
 // ============ Copilot API ============
 export const copilotAPI = {
-  sendMessage: (message: string) =>
-    api.post('/copilot', { message }),
+  sendMessage: (message: string, productId?: string) =>
+    api.post('/copilot', { message, productId }),
 };
 
 // ============ Checkout API ============
