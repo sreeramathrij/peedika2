@@ -113,12 +113,14 @@ export const getEcoScoreLevel = (score: number): EcoScoreLevel => {
 };
 
 export const categories = [
-  { id: 'electronics', name: 'Electronics', icon: '💻', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&h=300&fit=crop' },
-  { id: 'clothing', name: 'Clothing', icon: '👕', image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&h=300&fit=crop' },
-  { id: 'home', name: 'Home', icon: '🏠', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop' },
-  { id: 'beauty', name: 'Beauty', icon: '✨', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=300&fit=crop' },
-  { id: 'food', name: 'Food & Grocery', icon: '🥗', image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop' },
-  { id: 'sports', name: 'Sports', icon: '⚽', image: 'https://images.unsplash.com/photo-1461896836934- voices-of-the-mountains?w=400&h=300&fit=crop' },
+  { id: 'mens-fashion', name: "Men's Fashion", icon: '👕', image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&h=300&fit=crop' },
+  { id: 'womens-fashion', name: "Women's Fashion", icon: '👗', image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&h=300&fit=crop' },
+  { id: 'mobiles-computers', name: 'Mobiles & Computers', icon: '📱', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&h=300&fit=crop' },
+  { id: 'electronics', name: 'Electronics', icon: '💻', image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=400&h=300&fit=crop' },
+  { id: 'appliances', name: 'Appliances', icon: '🏠', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop' },
+  { id: 'home-living', name: 'Home & Living', icon: '🛋️', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop' },
+  { id: 'personal-care', name: 'Personal Care', icon: '✨', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=300&fit=crop' },
+  { id: 'groceries', name: 'Groceries', icon: '🥗', image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop' },
 ];
 
 export const ecoTags = [

@@ -88,8 +88,19 @@ export const copilotAPI = {
 
 // ============ Checkout API ============
 export const checkoutAPI = {
-  createOrder: (data: { paymentMethod: string; shippingAddress: any }) =>
-    api.post('/checkout', data),
+  createOrder: (data?: { useEcoPoints?: number; useStoreCredit?: number }) =>
+    api.post('/checkout', data || {}),
+
+  // Eco-points management
+  getEcoPoints: () => api.get('/checkout/eco-points'),
+
+  convertToStoreCredit: (points: number) => api.post('/checkout/eco-points/convert', { points }),
+
+  awardSwapBonus: (ecoPointsEarned: number) =>
+    api.post('/checkout/eco-points/swap-bonus', { ecoPointsEarned }),
+
+  // Order history
+  getOrderHistory: () => api.get('/checkout/orders'),
 };
 
 export default api;

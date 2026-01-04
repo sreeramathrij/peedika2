@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { CartItem, Product, BackendProduct, transformProduct } from '@/types/product';
-import { cartAPI } from '@/lib/api';
+import { cartAPI, checkoutAPI } from '@/lib/api';
 import { useAuth } from './AuthContext';
 import { toast } from 'sonner';
 
@@ -43,7 +43,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [items, setItems] = useState<CartItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [greenerSuggestions, setGreenerSuggestions] = useState<GreenerSuggestion[]>([]);
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, refreshUser } = useAuth();
 
   // Transform backend cart to frontend format
   const transformCart = (backendItems: any[]): CartItem[] => {
@@ -157,7 +157,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setIsLoading(true);
       const response = await cartAPI.swapCartItem(oldProductId, newProductId);
       setItems(transformCart(response.data.cart?.items || []));
-      toast.success('Swapped to greener option!');
+
+      // Bonus points are already awarded by the backend in the swap endpoint
+      // The backend automatically updates user's eco-points when swapping
+      const message = response.data.message || 'Swapped to greener option!';
+      toast.success(message);
+
+      // Refresh user data to update eco-points
+      if (response.data.bonusPoints && response.data.bonusPoints > 0) {
+        await refreshUser();
+      }
+
       // Refresh greener suggestions after swap
       await fetchGreenerSuggestions();
     } catch (error: any) {

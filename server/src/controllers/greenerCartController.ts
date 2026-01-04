@@ -112,7 +112,7 @@ export const swapCartItem = async (req: AuthRequest, res: Response) => {
   // Award eco-points bonus for swapping to greener product
   const ecoScoreImprovement = newProduct.eco_score - oldProduct.eco_score;
   let bonusPoints = 0;
-  
+
   if (ecoScoreImprovement > 0) {
     bonusPoints = Math.floor(ecoScoreImprovement * 5); // 5 points per eco-score point improvement
     const user = await User.findById(req.user._id);
@@ -123,8 +123,11 @@ export const swapCartItem = async (req: AuthRequest, res: Response) => {
     }
   }
 
+  // Populate cart items with product details before returning
+  await cart.populate('items.product');
+
   res.json({
-    message: bonusPoints > 0 
+    message: bonusPoints > 0
       ? `Item swapped! You earned ${bonusPoints} bonus eco-points! 🌿`
       : "Item swapped",
     cart,
