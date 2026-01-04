@@ -11,10 +11,11 @@ export const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl gradient-eco flex items-center justify-center">
-                <Leaf className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold text-foreground">Peedika</span>
+              <img
+                src="/peedika.png"
+                alt="Peedika Logo"
+                className="w-44 h-40 object-contain"
+              />
             </Link>
             <p className="text-sm text-muted-foreground mb-4">
               Shop sustainably. Every purchase makes a difference for our planet.

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ShoppingCart, User, Menu, X, Leaf } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useCart } from '@/context/CartContext';
@@ -51,12 +51,11 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl gradient-eco flex items-center justify-center group-hover:scale-105 transition-transform">
-              <Leaf className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold text-foreground hidden sm:block">
-              Peedika
-            </span>
+            <img
+              src="/peedika.png"
+              alt="Peedika Logo"
+              className="w-44 h-40 object-contain group-hover:scale-105 transition-transform"
+            />
           </Link>
 
           {/* Desktop Navigation */}

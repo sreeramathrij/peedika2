@@ -133,24 +133,23 @@ export const Chatbot = () => {
             className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] bg-card rounded-2xl shadow-2xl border border-border overflow-hidden"
           >
             {/* Header */}
-            <div className="gradient-eco p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-card/20 flex items-center justify-center">
-                  <Leaf className="h-5 w-5 text-primary-foreground" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-primary-foreground">Eco Assistant</h3>
-                  <p className="text-xs text-primary-foreground/80">Powered by AI</p>
-                </div>
-              </div>
+            <div className="gradient-eco p-6 flex flex-col items-center relative">
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-primary-foreground hover:bg-card/20"
+                className="absolute top-4 right-4 text-primary-foreground hover:bg-white/20"
                 onClick={() => setIsOpen(false)}
               >
                 <X className="h-5 w-5" />
               </Button>
+              <div className="flex flex-col items-center gap-2">
+                <img
+                  src="/peedika.png"
+                  alt="Peedika"
+                  className="w-32 h-28 object-contain"
+                />
+                <span className="text-base font-semibold text-primary-foreground tracking-wide">AI Assistant</span>
+              </div>
             </div>
 
             {/* Messages */}
