@@ -66,7 +66,8 @@ if (isProduction) {
   app.use(express.static(clientBuildPath));
   
   // Handle React routing - return index.html for all non-API routes
-  app.get("*", (req, res) => {
+  // Express 5 uses {*splat} syntax for catch-all routes
+  app.get("/{*splat}", (req, res) => {
     res.sendFile(path.join(clientBuildPath, "index.html"));
   });
 }
