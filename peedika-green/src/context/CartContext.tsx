@@ -168,18 +168,18 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         await refreshUser();
       }
 
-      // Refresh greener suggestions after swap
-      await fetchGreenerSuggestions();
+      // Note: greener suggestions will be automatically refetched via the useEffect
+      // when items state changes
     } catch (error: any) {
       const message = error.response?.data?.message || 'Failed to swap product';
       toast.error(message);
     } finally {
       setIsLoading(false);
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, refreshUser]);
 
   const fetchGreenerSuggestions = useCallback(async () => {
-    if (!isAuthenticated || items.length === 0) {
+    if (!isAuthenticated) {
       setGreenerSuggestions([]);
       return;
     }
@@ -191,14 +191,16 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Failed to fetch greener suggestions:', error);
       setGreenerSuggestions([]);
     }
-  }, [isAuthenticated, items.length]);
+  }, [isAuthenticated]);
 
   // Fetch greener suggestions when cart changes
   useEffect(() => {
-    if (items.length > 0) {
+    if (isAuthenticated && items.length > 0) {
       fetchGreenerSuggestions();
+    } else {
+      setGreenerSuggestions([]);
     }
-  }, [items.length, fetchGreenerSuggestions]);
+  }, [items, isAuthenticated, fetchGreenerSuggestions]);
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);

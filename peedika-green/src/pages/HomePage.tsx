@@ -5,6 +5,7 @@ import { ArrowRight, Leaf, Recycle, Truck, Award, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/ProductCard';
 import { productsAPI } from '@/lib/api';
+import { useAuth } from '@/context/AuthContext';
 import { categories, Product, BackendProduct, transformProduct } from '@/types/product';
 
 const HomePage = () => {
@@ -12,6 +13,7 @@ const HomePage = () => {
   const [recommended, setRecommended] = useState<Product[]>([]);
   const [deals, setDeals] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -263,34 +265,36 @@ const HomePage = () => {
         </section>
       )}
 
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center gradient-eco rounded-3xl p-12 relative overflow-hidden">
-            <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-                Join the Sustainable Shopping Movement
-              </h2>
-              <p className="text-primary-foreground/90 mb-8 max-w-xl mx-auto">
-                Sign up today and earn 100 eco-points. Make every purchase count towards a greener future.
-              </p>
-              <Button
-                size="lg"
-                variant="secondary"
-                className="rounded-full px-8"
-                asChild
-              >
-                <Link to="/signup">
-                  Create Free Account
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+      {/* CTA Section - Only show for non-authenticated users */}
+      {!isAuthenticated && (
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center gradient-eco rounded-3xl p-12 relative overflow-hidden">
+              <div className="relative z-10">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+                  Join the Sustainable Shopping Movement
+                </h2>
+                <p className="text-primary-foreground/90 mb-8 max-w-xl mx-auto">
+                  Sign up today and earn 100 eco-points. Make every purchase count towards a greener future.
+                </p>
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="rounded-full px-8"
+                  asChild
+                >
+                  <Link to="/signup">
+                    Create Free Account
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary-foreground/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary-foreground/10 rounded-full blur-3xl" />
             </div>
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-foreground/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary-foreground/10 rounded-full blur-3xl" />
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 };
