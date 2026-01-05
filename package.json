@@ -4,7 +4,7 @@
   "description": "Eco-friendly e-commerce platform with sustainability scoring",
   "scripts": {
     "install:client": "cd peedika-green && npm install --include=dev",
-    "install:server": "cd server && npm install",
+    "install:server": "cd server && npm install --include=dev",
     "install:all": "npm run install:client && npm run install:server",
     "build:client": "cd peedika-green && npm run build",
     "build:server": "cd server && npm run build",
