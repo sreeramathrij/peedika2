@@ -1,0 +1,18 @@
+# Render Blueprint - https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: peedika-eco-commerce
+    runtime: node
+    buildCommand: npm run render:build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false # Set this manually in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GEMINI_API_KEY
+        sync: false # Set this manually in Render dashboard
+      - key: UNSPLASH_ACCESS_KEY
+        sync: false # Optional - set manually if needed

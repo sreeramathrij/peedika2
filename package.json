@@ -1,0 +1,22 @@
+{
+  "name": "peedika-eco-commerce",
+  "version": "1.0.0",
+  "description": "Eco-friendly e-commerce platform with sustainability scoring",
+  "scripts": {
+    "install:all": "npm install && cd peedika-green && npm install && cd ../server && npm install",
+    "build:client": "cd peedika-green && npm run build",
+    "build:server": "cd server && npm run build",
+    "build": "npm run build:client && npm run copy:client && npm run build:server",
+    "copy:client": "node scripts/copy-client.js",
+    "start": "cd server && npm start",
+    "dev": "cd server && npm run dev",
+    "dev:client": "cd peedika-green && npm run dev",
+    "seed": "cd server && npm run seed",
+    "render:build": "npm run install:all && npm run build"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["eco-commerce", "sustainability", "shopping"],
+  "license": "ISC"
+}
